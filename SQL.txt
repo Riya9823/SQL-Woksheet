@@ -1,0 +1,34 @@
+1. CREATE TABLE customers
+   ( customerNumber int NOT NULL,
+     customerName varchar(50) NOT NULL,
+     contactLastName varchar(50) NOT NULL,
+     contactFirstname varchar(50) NOT NULL,
+     phone char(15) NOT NULL,
+     addressLine1 char(50),
+     addressLine2 char(50),
+     city char(25),
+     state char(25),
+     postalCode char(10),
+     country char(25),
+     salesRepEmployeeNumber char(10) NOT NULL UNIQUE,
+     creditLimit char(25)
+   );
+2.  CREATE TABLE orders
+   ( orderNumber int NOT NULL,
+     orderDate DateTime,
+     requiredDate DateTime,
+     shippedDate DateTime,
+     status char(255),
+     comments char(255),
+     customerNumber int NOTNULL
+   );  
+3. SELECT orderNumber, orderDate, requiredDate, shippedDate, status, comments, customerNumber                  
+   FROM orders;   
+4. SELECT comments FROM customers;
+
+5. SELECT orderNumber, orderDate
+   FROM orders
+   WHERE orderDate=2020-06-15;
+   
+6.    
+
