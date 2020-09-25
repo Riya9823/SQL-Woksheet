@@ -30,5 +30,77 @@
    FROM orders
    WHERE orderDate=2020-06-15;
    
-6.    
-
+6. CREATE TABLE employees
+   ( employeeNumber int NOT NULL,
+     lastName varchar(50) NOT NULL,
+     firstname varchar(50) NOT NULL,
+     extension char(15),
+     email varchar(50) NOT NULL,
+     officeCode char(10) NOT NULL,
+     reportsTo char(25),
+     jobTitle varchar(25)
+   );   
+   SELECT  firstName, lastName, employeeNumber  
+   FROM employees
+   
+7. SELECT orderNumber,customerName                                   
+   FROM orders
+   WHERE orderNumber =
+   (SELECT orderNumber
+   FROM orders 
+   WHERE customerName="*");
+   
+8. SELECT col as customerName, col2 as saleRepEmployeeName 
+   FROM customers  
+   
+9. CREATE TABLE payments
+   ( customerNumber int NOT NULL,
+     checkNumber varchar(25) NOT NULL,
+     paymentDate DateTime,
+     ammount decimal(15)
+   );  
+   SELECT col as paymentDate, col2 as ammount 
+   FROM customers
+   where paymentDate=
+   
+10. CREATE TABLE products
+    ( productCode int NOT NULL,
+     productName varchar(25) NOT NULL,
+     productLine char(50),
+     productScale char(25),
+     productVendor char(25),
+     productDescription char(255),
+     quantityInStock char(50) NOT NULL,
+     buyPrice decimal(10) NOT NULL,
+     MSRP decimal(10) NOT NULL
+    );      
+    SELECT  productName, MSRP, productDescription  
+    FROM products
+    
+11. SELECT P.productName AS "Product Name", 
+           P.productDescription AS "Product DEscription", 
+           O.ordered AS "Ordered"
+       FROM item_mast P, order_mast C
+       WHERE P.product_ordered = O.order_id
+       AND P.productDescription =
+     (
+       SELECT MAX(O.ordered)
+       FROM item_mast P
+       WHERE P.product_ordered = O.order_id
+     );
+     
+12. 
+13. SELECT state, COUNT(DISTINCT orderNumber), 
+    MAX(customerNumber) 
+    FROM customers 
+    GROUP BY customerNumber 
+    ORDER BY 2 DESC;
+14.
+15. SELECT  orderNumber, customer Name, buyPrice,
+    b.customerName AS "Customer Name", b.grade, 
+    c.orderNumner AS "Order Number", c.commission 
+    FROM orders a
+    INNER JOIN customer b 
+    ON a.customer_id=b.customer_id 
+    INNER JOIN salesman c 
+    ON a.orderNumber_id=c.orderNumber_id;
